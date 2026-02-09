@@ -18,8 +18,8 @@ def prediction():
     # Predicting the rent, setting the ranges and writing it to my streamlit webpage
     predictdata = pd.DataFrame(ohe.transform(predictdata), columns=feature_names)
     rent = model.predict(predictdata)
-    lower = math.ceil(rent - 37000) 
-    higher = math.ceil(rent + 37000)
+    lower = math.ceil(rent[0] - 37000) 
+    higher = math.ceil(rent[0] + 37000)
     st.write(f'The Yearly Rent of the lodge would be between \u20A6{format(math.ceil(lower/1000)*1000, ",d")} and \u20A6{format(math.ceil(higher/1000)*1000, ",d")}, but the exact prediction is \u20A6{format(math.ceil(math.ceil(rent[0])/1000)*1000, ",d")}')
     
 
